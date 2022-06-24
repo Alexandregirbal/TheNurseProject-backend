@@ -17,7 +17,7 @@ export class UserManager extends AbstractManager<User> {
 
     const user = await this.userModel.create({ ...entityPartial, password })
 
-    return user
+    return user as User
   }
 
   async addOneCompany(user: User, company: Company): Promise<Omit<User, 'password'>> {
