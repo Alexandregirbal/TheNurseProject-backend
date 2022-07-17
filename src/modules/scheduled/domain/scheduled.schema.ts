@@ -25,15 +25,21 @@ export class Scheduled extends AbstractDocument {
   @Type(() => Appointment)
   lastAppointment: Appointment
 
-  @Prop({ type: [{ type: Schema.Types.ObjectId, ref: 'Round' }] })
+  @Prop({ type: Schema.Types.ObjectId, ref: 'Round' })
   @Type(() => Round)
   round: Round
 
   @Prop()
-  startDate: Date
+  startDate: string
 
   @Prop()
-  endDate: Date | undefined
+  endDate: string
+
+  @Prop()
+  timeStart: string
+
+  @Prop()
+  timeEnd: string
 
   @Prop()
   weekDays: AppointmentScheduled[]

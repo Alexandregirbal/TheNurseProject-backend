@@ -44,7 +44,9 @@ export class AbstractManager<Entity extends { _id: Types.ObjectId }> {
   }
 
   async addToRelation(entity: Entity, relation: keyof Entity, relationToAdd: any): Promise<Entity> {
+    //@ts-ignore
     return this.entityModel
+      //@ts-ignore
       .findByIdAndUpdate(entity._id, { $push: { [relation]: relationToAdd._id } }, { new: true })
       .lean()
       .exec()

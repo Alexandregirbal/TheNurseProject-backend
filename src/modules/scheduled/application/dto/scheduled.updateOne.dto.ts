@@ -1,5 +1,5 @@
 import { Type } from 'class-transformer'
-import { IsArray, IsDate, IsEnum, IsMongoId, IsNumber, IsObject, IsOptional, ValidateNested } from 'class-validator'
+import { IsArray, IsDate, IsEnum, IsMongoId, IsNumber, IsObject, IsOptional, IsString, ValidateNested } from 'class-validator'
 import { AppointmentObject } from 'src/modules/appointment/domain/appointment.object'
 
 export class Time {
@@ -35,15 +35,13 @@ export class ScheduledUpdateOneDto {
   @IsOptional()
   round: string
 
-  @Type(() => Date)
-  @IsDate()
+  @IsString()
   @IsOptional()
-  startDate: Date
+  startDate: string
 
-  @Type(() => Date)
-  @IsDate()
+  @IsString()
   @IsOptional()
-  endDate: Date | undefined
+  endDate: string
 
   @IsArray()
   @ValidateNested({ each: true })
@@ -51,6 +49,7 @@ export class ScheduledUpdateOneDto {
   @IsOptional()
   weekDays: AppointmentScheduled[]
 
+  @IsOptional()
   @IsEnum({ enum: AppointmentObject.Category })
   category: AppointmentObject.Category
 }
