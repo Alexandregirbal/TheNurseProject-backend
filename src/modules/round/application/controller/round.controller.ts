@@ -10,6 +10,8 @@ export class RoundController {
   @Get(':roundId')
   @Authorisation.isMember()
   getOne(@Param('roundId') roundId: string): Promise<Round> {
+    console.log('Test');
+    
     return this.roundService.getOne(roundId)
   }
 }
